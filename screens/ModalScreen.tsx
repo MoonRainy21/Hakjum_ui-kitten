@@ -1,18 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import { getData } from '../storage/data';
+
+interface Subject {
+  name: string
+}
+
+interface Data {
+  subject: Subject
+  midscore: number
+  finscore: number
+  actscore: number
+}
 
 export default function ModalScreen() {
+  const [data, setData] = useState<Data[]>()
+  const wtf = getData()
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ModalScreen.tsx" />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <Text style={styles.title}>{data === undefined ? 0:data[0].subject.name}</Text>
+      <button onClick={async()=>{let temp=await getData(); setData(temp)}}>Hi</button>
     </View>
   );
 }
