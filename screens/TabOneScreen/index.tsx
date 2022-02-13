@@ -36,7 +36,13 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
       <ScoreInput test={{ name: '중간고사', portion: '35' }} setValue={setMidscore} />
       <ScoreInput test={{ name: '기말고사', portion: '35' }} setValue={setFinscore} />
       <ScoreInput test={{ name: '수행평가', portion: '35' }} setValue={setActscore} />
-      <Pressable onPress={async() => { navigation.navigate('Modal'); await Savedata(data) }} style={[styles.button, { backgroundColor: '#000066', width: '30%', marginTop: 20 }]} >
+      <Pressable
+        onPress={async () => {
+          await Savedata(data)
+          navigation.navigate('Modal', { subject: subject, midscore: Number(midscore), finscore: Number(finscore), actscore: Number(actscore) });
+        }}
+        style={[styles.button, { backgroundColor: '#000066', width: '30%', marginTop: 20 }]}
+      >
         <Text style={{ color: 'white', fontSize: 15 }}>계산하기!</Text>
       </Pressable>
     </View>

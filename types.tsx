@@ -13,9 +13,20 @@ declare global {
   }
 }
 
+interface Subject {
+  name: string
+}
+
+interface Data {
+  subject: Subject
+  midscore: number
+  finscore: number
+  actscore: number
+}
+
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: undefined;
+  Modal: Data | undefined;
   NotFound: undefined;
   Login: undefined;
 };
