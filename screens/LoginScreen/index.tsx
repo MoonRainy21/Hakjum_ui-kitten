@@ -10,7 +10,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
         <View style={styles.container}>
             <Image source={require('../../assets/images/sshs_icon_white.png')} style={{ width: "40%", height: undefined, aspectRatio: 1, backgroundColor: "#ffffff", marginBottom:10 }} />
             <UserInput />
-            <Pressable onPress={() => { VersionCheck();navigation.navigate('Root') }} style={[styles.button, { backgroundColor: '#000066', width: '70%', marginTop:10 }]} >
+            <Pressable onPress={async() => { await VersionCheck();navigation.navigate('Root') }} style={[styles.button, { backgroundColor: '#000066', width: '70%', marginTop:10 }]} >
                 <Text style={{ color: 'white', fontSize: 15 }}>LOGIN</Text>
             </Pressable>
         </View>

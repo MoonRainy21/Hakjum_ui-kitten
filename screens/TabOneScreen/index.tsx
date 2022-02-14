@@ -7,7 +7,7 @@ import { ScoreInput } from './ScoreInput';
 import { SubjectSelect } from './SubjectSelect';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-  const [subject, setSubject] = useState<Subject>({ name: '' })
+  const [subject, setSubject] = useState<Subject>({ name: '', midportion:0, finportion:0, actportion:0 })
   const [midscore, setMidscore] = useState<string>('0')
   const [finscore, setFinscore] = useState<string>('0')
   const [actscore, setActscore] = useState<string>('0')

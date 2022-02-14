@@ -6,6 +6,7 @@ import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import { getData } from '../../storage/data';
 import { RootStackScreenProps } from '../../types';
+import { DescribeData } from './DescribeData';
 
 export default function ModalScreen({ route, navigation }: RootStackScreenProps<'Modal'>) {
   const data = route.params
@@ -19,12 +20,7 @@ export default function ModalScreen({ route, navigation }: RootStackScreenProps<
   }
   return (
     <View style={styles.container}>
-      <Text>{'과목 : ' + data.subject.name}</Text>
-      <Text>{'중간 점수 : ' +data.midscore}</Text>
-      <Text>{'기말 점수 : ' +data.finscore}</Text>
-      <Text>{'수행 점수 : ' +data.actscore}</Text>
-
-      <Text>{'최종 학점 : '+1}</Text>
+      <DescribeData data={data} />
     </View>
   );
 }
@@ -34,14 +30,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });

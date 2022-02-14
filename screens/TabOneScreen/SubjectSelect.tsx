@@ -1,22 +1,12 @@
 import { Autocomplete, AutocompleteItem, Button } from "@ui-kitten/components";
-import { useState } from "react";
-
-const Subjects = [
-    { name: '물리1' },
-    { name: '물리2' },
-    { name: '물리3' },
-    { name: '물리4' },
-    { name: '수학1' },
-    { name: '수학2' },
-    { name: '수학3' },
-    { name: '수학4' },
-]
+import { useEffect, useState } from "react";
+import { getSubjectData, SUBJECTDATA } from "../../storage/subjectData";
 
 const filter = (item: Subject, query: string) => item.name.toLowerCase().includes(query.toLowerCase());
 
 export function SubjectSelect(props: { setValue: any }) {
     const [value, setValue] = useState('')
-    const [data, setData] = useState(Subjects)
+    const [data, setData] = useState<Subject[]>(SUBJECTDATA)
 
     const renderOption = (item: Subject, index: number) => (
         <AutocompleteItem
@@ -25,16 +15,14 @@ export function SubjectSelect(props: { setValue: any }) {
         />
     );
 
-    const temp = (item: string) => { props.setValue({ name: item }) }
-
     return (
         <Autocomplete
             placeholder="과목명 입력"
             value={value}
-            onSelect={async (index) => { setValue(Subjects[index].name); temp(Subjects[index].name) }}
+            onSelect={async (index) => { setValue(data[index].name); props.setValue(data[index]) }}
             onChangeText={(query) => {
                 setValue(query)
-                setData(Subjects.filter(item => filter(item, query)))
+                setData(SUBJECTDATA.filter(item => filter(item, query)))
             }}
         >
             {data.map(renderOption)}

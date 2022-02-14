@@ -11,6 +11,7 @@ export async function appendData(value: Data) {
             data = JSON.parse(lastdata)
         }
         data.push(value)
+        console.log(data)
         const jsonValue = JSON.stringify(data)
         await AsyncStorage.setItem('data', jsonValue)
     } catch (e) {

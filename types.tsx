@@ -13,6 +13,9 @@ declare global {
   }
   interface Subject {
     name: string
+    midportion: number
+    finportion: number
+    actportion: number
   }
   
   interface Data {
