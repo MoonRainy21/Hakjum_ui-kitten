@@ -11,17 +11,16 @@ declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList {}
   }
-}
-
-interface Subject {
-  name: string
-}
-
-interface Data {
-  subject: Subject
-  midscore: number
-  finscore: number
-  actscore: number
+  interface Subject {
+    name: string
+  }
+  
+  interface Data {
+    subject: Subject
+    midscore: number
+    finscore: number
+    actscore: number
+  }
 }
 
 export type RootStackParamList = {

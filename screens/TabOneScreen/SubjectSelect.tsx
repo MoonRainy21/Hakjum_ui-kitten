@@ -1,10 +1,6 @@
 import { Autocomplete, AutocompleteItem, Button } from "@ui-kitten/components";
 import { useState } from "react";
 
-interface Subject {
-    name: string
-}
-
 const Subjects = [
     { name: '물리1' },
     { name: '물리2' },
@@ -29,21 +25,20 @@ export function SubjectSelect(props: { setValue: any }) {
         />
     );
 
-    const temp = (item: string) => { props.setValue({name:item}) }
+    const temp = (item: string) => { props.setValue({ name: item }) }
 
     return (
-        <>
-            <Autocomplete
-                placeholder="과목명 입력"
-                value={value}
-                onSelect={async (index) => { setValue(Subjects[index].name); temp(Subjects[index].name) }}
-                onChangeText={(query) => {
-                    setValue(query)
-                    setData(Subjects.filter(item => filter(item, query)))
-                }}
-            >
-                {data.map(renderOption)}
-            </Autocomplete>
-        </>
+        <Autocomplete
+            placeholder="과목명 입력"
+            value={value}
+            onSelect={async (index) => { setValue(Subjects[index].name); temp(Subjects[index].name) }}
+            onChangeText={(query) => {
+                setValue(query)
+                setData(Subjects.filter(item => filter(item, query)))
+            }}
+        >
+            {data.map(renderOption)}
+        </Autocomplete>
+
     )
 }

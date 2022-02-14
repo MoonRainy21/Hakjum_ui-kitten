@@ -2,12 +2,7 @@ import { Input } from "@ui-kitten/components";
 import { useState } from "react";
 import { Text, View } from "../../components/Themed";
 
-interface Test {
-    name: string
-    portion: string
-}
-
-export function ScoreInput(props: {test:Test, setValue:any, style?:StyleSheet}) {
+export function ScoreInput(props: {test:{name:string, portion:string}, setValue:any, style?:StyleSheet}) {
     const [score, setScore] = useState<string>('')
     return(
         <View>

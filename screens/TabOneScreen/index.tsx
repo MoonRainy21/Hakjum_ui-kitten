@@ -6,19 +6,8 @@ import { Savedata } from './Savedata';
 import { ScoreInput } from './ScoreInput';
 import { SubjectSelect } from './SubjectSelect';
 
-interface Subject {
-  name: string
-}
-
-interface Data {
-  subject: Subject
-  midscore: number
-  finscore: number
-  actscore: number
-}
-
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-  const [subject, setSubject] = useState<Subject>({ name: 'default' })
+  const [subject, setSubject] = useState<Subject>({ name: '' })
   const [midscore, setMidscore] = useState<string>('0')
   const [finscore, setFinscore] = useState<string>('0')
   const [actscore, setActscore] = useState<string>('0')

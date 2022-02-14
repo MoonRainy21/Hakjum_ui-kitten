@@ -1,3 +1,4 @@
+import { Button } from '@ui-kitten/components';
 import { useState } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
@@ -6,25 +7,24 @@ import { Text, View } from '../../components/Themed';
 import { getData } from '../../storage/data';
 import { RootStackScreenProps } from '../../types';
 
-interface Subject {
-  name: string
-}
-
-interface Data {
-  subject: Subject
-  midscore: number
-  finscore: number
-  actscore: number
-}
-
 export default function ModalScreen({ route, navigation }: RootStackScreenProps<'Modal'>) {
-  const [data, setData] = useState<Data[]>()
-  const wtf = getData()
+  const data = route.params
+  if (data === undefined) {
+    return (
+      <>
+        <Text>Error Occured</Text>
+        <Button onPress={() => navigation.navigate('Root')}>Go Back to Root</Button>
+      </>
+    )
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{data === undefined ? 0:data[0].subject.name}</Text>
-      <Text>{'과목은'+route.params?.subject.name}</Text>
-      <button onClick={async()=>{let temp=await getData(); setData(temp)}}>Hi</button>
+      <Text>{'과목 : ' + data.subject.name}</Text>
+      <Text>{'중간 점수 : ' +data.midscore}</Text>
+      <Text>{'기말 점수 : ' +data.finscore}</Text>
+      <Text>{'수행 점수 : ' +data.actscore}</Text>
+
+      <Text>{'최종 학점 : '+1}</Text>
     </View>
   );
 }

@@ -1,16 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
-interface Subject {
-    name: string
-}
-
-interface Data {
-    subject: Subject
-    midscore: number
-    finscore: number
-    actscore: number
-}
-
 export async function appendData(value: Data) {
     try {
         const lastdata = await AsyncStorage.getItem('data')
