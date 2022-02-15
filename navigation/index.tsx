@@ -79,7 +79,6 @@ function BottomTabNavigator() {
         options={{
           title: '기록',
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
-          headerShown: false
         }}
       />
     </BottomTab.Navigator>

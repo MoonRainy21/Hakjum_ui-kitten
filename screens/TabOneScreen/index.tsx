@@ -22,9 +22,9 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
   return (
     <View style={styles.container}>
       <SubjectSelect setValue={setSubject} />
-      <ScoreInput test={{ name: '중간고사', portion: '35' }} setValue={setMidscore} />
-      <ScoreInput test={{ name: '기말고사', portion: '35' }} setValue={setFinscore} />
-      <ScoreInput test={{ name: '수행평가', portion: '35' }} setValue={setActscore} />
+      <ScoreInput test={{ name: '중간고사', portion: data.subject.midportion }} setValue={setMidscore} />
+      <ScoreInput test={{ name: '기말고사', portion: data.subject.finportion }} setValue={setFinscore} />
+      <ScoreInput test={{ name: '수행평가', portion: data.subject.actportion }} setValue={setActscore} />
       <Pressable
         onPress={async () => {
           await Savedata(data)
